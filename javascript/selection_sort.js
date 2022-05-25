@@ -1,20 +1,31 @@
 function selectionSort(arr) {
-  // type your code here
+    const n = arr.length;
+    let current_lowest_index;
+    for (let i = 0; i < n; i++) {
+        current_lowest_index = i;
+        for (let j = i + 1; j < n; j++) {
+            if (arr[j] < arr[current_lowest_index])
+                current_lowest_index = j;
+        }
+        const tmp = arr[i];
+        arr[i] = arr[current_lowest_index];
+        arr[current_lowest_index] = tmp;
+    }
+    return arr;
 }
-
 if (require.main === module) {
-  // add your own tests in here
-  console.log("Expecting: [-1, 2, 3, 5]");
-  console.log("=>", selectionSort([3, -1, 5, 2]));
+    // add your own tests in here
+    console.log("Expecting: [-1, 2, 3, 5]");
+    console.log("=>", selectionSort([3, -1, 5, 2]));
 
-  console.log("");
+    console.log("");
 
-  // BENCHMARK HERE, and print the average runtime
-  const longInput = [];
+    // BENCHMARK HERE, and print the average runtime
+    const longInput = [];
 
-  for (let i = 0; i < 100; ++i) {
-    longInput.push(Math.random());
-  }
+    for (let i = 0; i < 100; ++i) {
+        longInput.push(Math.random());
+    }
 }
 
 module.exports = selectionSort;
